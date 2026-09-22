@@ -1,55 +1,41 @@
-START
+# Utility Bill Calculator
 
-Display the Utility Bill Calculator heading.
+## About the Project
 
-Ask the customer for their account number.
-Read the account number.
+This project is a C++ utility bill calculator made to calculate a customer's monthly electricity bill based on their meter readings.
 
-Ask the customer for their full name.
-Read the full name.
+The program asks for the customer's account number, full name, previous meter reading, and current meter reading. It then calculates the total electricity used and applies the different usage rates depending on how much electricity was consumed.
 
-Ask for the previous meter reading.
-Read the previous reading.
+The bill also includes a base customer charge and a 5.5% Municipal Clean Energy Surcharge. At the end, the program displays everything in an itemized invoice so the customer can easily see where the final balance comes from.
 
-Ask for the current meter reading.
-Read the current reading.
+## Main Features
 
-Check the meter readings.
+* Reads the customer's account number and full name.
+* Calculates electricity consumption from the meter readings.
+* Uses different rates for Tier 1, Tier 2, and Tier 3 usage.
+* Calculates the subtotal, surcharge, and total balance.
+* Checks inputs to prevent incorrect readings from being accepted.
+* Displays the final bill in a clean invoice format.
+* Uses `iomanip` to keep the money values organized to two decimal places.
 
-IF the current reading is less than the previous reading
-Reject the readings.
-Ask the customer to enter the readings again.
-END IF
+## How to Compile
 
-Calculate the total electricity consumption.
+Use the following command in the terminal:
 
-Set the base customer charge to $18.50.
+bash
+g++ src/main.cpp -o utility-bill-calculator
 
-Check the amount of electricity used.
+## How to Run
 
-IF the consumption is 500 kWh or less
-Calculate the Tier 1 charge.
+bash
+./utility-bill-calculator
 
-ELSE IF the consumption is 1000 kWh or less
-Calculate the Tier 1 charge.
-Calculate the Tier 2 charge.
 
-ELSE
-Calculate the Tier 1 charge.
-Calculate the Tier 2 charge.
-Calculate the Tier 3 charge.
-END IF
+## Test Cases
 
-Add the base charge and tier charges to get the subtotal.
-
-Calculate the 5.5% Municipal Clean Energy Surcharge.
-
-Add the surcharge to the subtotal to get the total balance.
-
-Display the customer's information.
-
-Display the tier charges, subtotal, surcharge, and total balance.
-
-Display the payment due date.
-
-END
+| Test | Previous Reading | Current Reading | Expected Result                                 | Status |
+| ---- | ---------------: | --------------: | ----------------------------------------------- | ------ |
+| 1    |             1000 |            1200 | 200 kWh consumed                                | Passed |
+| 2    |             1000 |            1800 | 800 kWh consumed                                | Passed |
+| 3    |             1000 |         2250.50 | 1250.50 kWh consumed                            | Passed |
+| 4    |             1500 |            1400 | 100 KWH consumed                                | passed |
