@@ -1,0 +1,55 @@
+START
+
+Display the Utility Bill Calculator heading.
+
+Ask the customer for their account number.
+Read the account number.
+
+Ask the customer for their full name.
+Read the full name.
+
+Ask for the previous meter reading.
+Read the previous reading.
+
+Ask for the current meter reading.
+Read the current reading.
+
+Check the meter readings.
+
+IF the current reading is less than the previous reading
+Reject the readings.
+Ask the customer to enter the readings again.
+END IF
+
+Calculate the total electricity consumption.
+
+Set the base customer charge to $18.50.
+
+Check the amount of electricity used.
+
+IF the consumption is 500 kWh or less
+Calculate the Tier 1 charge.
+
+ELSE IF the consumption is 1000 kWh or less
+Calculate the Tier 1 charge.
+Calculate the Tier 2 charge.
+
+ELSE
+Calculate the Tier 1 charge.
+Calculate the Tier 2 charge.
+Calculate the Tier 3 charge.
+END IF
+
+Add the base charge and tier charges to get the subtotal.
+
+Calculate the 5.5% Municipal Clean Energy Surcharge.
+
+Add the surcharge to the subtotal to get the total balance.
+
+Display the customer's information.
+
+Display the tier charges, subtotal, surcharge, and total balance.
+
+Display the payment due date.
+
+END
