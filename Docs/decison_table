@@ -1,0 +1,249 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <vector>
+using namespace std;
+
+int main() {
+
+    string name;
+    int destination;
+    int weather;
+    double budget;
+    char activity;
+    int tier;
+    int tripLength = 7;
+    string tierName;
+    string destName;
+
+    cout << "================================================================\n";
+    cout << "             BELIZE TRAVEL & ACTIVITY ADVISOR SYSTEM              \n";
+    cout << "               Ministry of Tourism & Civil Aviation             \n";
+    cout << "================================================================\n\n";
+
+    cout << "Enter Lead Traveler Name: ";
+    getline(cin, name);
+
+    cout << "\nSelect Destination Zone:\n";
+    cout << "  [1] Coastal / Cayes (Ambergris Caye, Caye Caulker, Placencia)\n";
+    cout << "  [2] Inland Heartland (Cayo District, San Ignacio, Pine Ridge)\n";
+    cout << "  [3] Southern Rainforest (Stann Creek, Toledo, Hopkins)\n";
+    cout << "Select Destination [1-3](Use the number): ";
+    cin >> destination;
+    while (destination < 1 || destination > 3) {
+        cout << "[ERROR] Invalid selection. Enter 1, 2, or 3: ";
+        cin >> destination;
+    }
+
+    switch (destination) {
+        case 1:
+            destName = "Coastal / Cayes";
+            break;
+        case 2:
+            destName = "Inland Heartland";
+            break;
+        case 3:
+            destName = "Southern Rainforest";
+            break;
+        default:
+            destName = "Unknown";
+            break;
+    }
+
+    cout << "\nCurrent Weather Forecast:\n";
+    cout << "  [1] Clear, Sunny Tropical\n";
+    cout << "  [2] Intermittent Rain / Cloud Cover\n";
+    cout << "  [3] Severe Weather / Small Craft Advisory\n";
+    cout << "Select Weather Condition [1-3](Only use number) : ";
+    cin >> weather;
+    while (weather < 1 || weather > 3) {
+        cout << "[ERROR] Invalid selection. Enter 1, 2, or 3: ";
+        cin >> weather;
+    }
+
+    cout << "\nEnter Expected Daily Budget per Person ($ USD): ";
+    cin >> budget;
+    while (budget < 0) {
+        cout << "[ERROR] Budget cannot be negative. Try again: ";
+        cin >> budget;
+    }
+
+    if (budget < 75.00) {
+        tier = 1;
+        tierName = "Tier 1 (Backpacker / Economy)";
+    } else if (budget >= 75.00 && budget <= 250.00) {
+        tier = 2;
+        tierName = "Tier 2 (Explorer / Moderate)";
+    } else if (budget > 250.00) {
+        tier = 3;
+        tierName = "Tier 3 (Luxury / Private Tour)";
+    }
+
+    switch (tier) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+    }
+
+    cout << "\nPrimary Activity Interest:\n";
+    cout << "  [A] Adventure & Marine Expeditions\n";
+    cout << "  [C] Cultural Tours & Culinary Workshops\n";
+    cout << "  [R] Relaxation & Coastal Leisure\n";
+    cout << "Select Activity [A/C/R]: ";
+    cin >> activity;
+    activity = toupper(activity);
+    while (activity != 'A' && activity != 'C' && activity != 'R') {
+        cout << "[ERROR] Invalid selection. Enter A, C, or R: ";
+        cin >> activity;
+        activity = toupper(activity);
+    }
+
+    cout << "\nGenerating tailored travel advisory... Done.\n\n";
+
+    if (weather == 3) {
+        cout << "================================================================\n";
+        cout << "            *** SPECIAL WEATHER WARNING ADVISORY ***            \n";
+        cout << "================================================================\n";
+        cout << "Traveler Name    : " << name << "\n";
+        cout << "Destination      : " << destName << "\n";
+        cout << "Weather Profile  : SEVERE WEATHER / SMALL CRAFT ADVISORY\n";
+        cout << "Budget Tier      : " << tierName << " ($" << budget << " USD/day)\n";
+        cout << "----------------------------------------------------------------\n";
+        cout << "SAFETY OVERRIDE NOTICE:\n";
+
+        if (destination == 1) {
+            cout << ">> ALL MARINE & WATER-BASED ACTIVITIES ARE SUSPENDED.\n";
+            cout << "   The Belize Port Authority has issued a small craft warning.\n";
+            cout << "   Navigating reef channels or water taxi transit is strictly hazardous.\n\n";
+            cout << "RECOMMENDED EXPERIENCE:\n";
+            cout << ">> Indoor Cultural Cooking Masterclass & Chocolate Making Workshop\n";
+            cout << "   Shift plans inland to town center facilities. Learn traditional\n";
+            cout << "   Maya and Garifuna culinary arts while remaining protected indoors.\n\n";
+            cout << "RECOMMENDED GEAR CHECKLIST:\n";
+            cout << " * Emergency LED flashlight / headlamp\n";
+            cout << " * Waterproof storm jacket\n";
+            cout << " * Battery power bank for mobile phones\n\n";
+            cout << "LOGISTICAL ADVISORY:\n";
+            cout << " * Stay tuned to the National Emergency Management Organization (NEMO).\n";
+        } else {
+            cout << ">> ADVISORY: Flash flood warning for all river networks.\n";
+            cout << "   Caving and river crossings are strictly hazardous in this condition.\n\n";
+            cout << "RECOMMENDED EXPERIENCE:\n";
+            cout << ">> Remain in urban centers until the advisory is lifted.\n";
+            cout << "   Suspend all caving and river crossing plans.\n\n";
+            cout << "RECOMMENDED GEAR CHECKLIST:\n";
+            cout << " * Emergency LED flashlight / headlamp\n";
+            cout << " * Waterproof storm jacket\n";
+            cout << " * Battery power bank for mobile phones\n\n";
+            cout << "LOGISTICAL ADVISORY:\n";
+            cout << " * Stay tuned to the National Emergency Management Organization (NEMO).\n";
+        }
+
+        cout << "================================================================\n";
+        return 0;
+    }
+
+    string weatherText;
+    if (weather == 1) {
+        weatherText = "Clear, Sunny Tropical (Safe for Offshore Excursions)";
+    } else if (weather == 2) {
+        weatherText = "Intermittent Rain / Cloud Cover";
+    }
+
+    string activityText;
+    if (activity == 'A') {
+        activityText = "Adventure & Eco-Trekking";
+    } else if (activity == 'C') {
+        activityText = "Culture & Heritage";
+    } else if (activity == 'R') {
+        activityText = "Relaxation & Leisure";
+    }
+
+    cout << "================================================================\n";
+    cout << "                 CURATED BELIZE TRAVEL ITINERARY                \n";
+    cout << "================================================================\n";
+    cout << "Traveler Name    : " << name << "\n";
+    cout << "Destination      : " << destName << "\n";
+    cout << "Weather Profile  : " << weatherText << "\n";
+    cout << "Budget Tier      : " << tierName << " ($" << budget << " USD/day)\n";
+    cout << "Selected Focus   : " << activityText << "\n";
+    cout << "----------------------------------------------------------------\n";
+    cout << "RECOMMENDED EXPERIENCE:\n";
+
+    if (destination == 1 && weather == 1 && (tier == 2 || tier == 3) && activity == 'A') {
+        cout << ">> Hol Chan Marine Reserve Snorkeling / Scuba Dive\n";
+        cout << "   Take an authorized local boat charter to the barrier reef.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Reef-safe biodegradable sunscreen\n";
+        cout << " * UV rash guard\n";
+        cout << " * Snorkel fins\n";
+    } else if (destination == 1 && weather == 1 && tier == 1) {
+        cout << ">> Caye Caulker \"Split\" swimming & beach cycling\n";
+        cout << "   Budget-friendly island exploring on foot or rented bicycle.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Reusable water container\n";
+        cout << " * Sun hat\n";
+        cout << " * UV polarized glasses\n";
+    } else if (destination == 1 && weather == 2 && (activity == 'C' || activity == 'R')) {
+        cout << ">> Traditional Garifuna drum making & culinary tasting\n";
+        cout << "   Indoor cultural workshop, unaffected by the rain.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Light windbreaker\n";
+        cout << " * Waterproof dry-bag for mobile devices\n";
+    } else if (destination == 2 && weather == 1 && activity == 'A') {
+        cout << ">> Actun Tunichil Muknal (ATM) Cave Exploration\n";
+        cout << "   Guided cave expedition through the Maya underworld.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Closed-toe trail shoes\n";
+        cout << " * Quick-dry synthetic clothing\n";
+        cout << " * Change of dry socks\n";
+    } else if (destination == 2 && weather == 1 && (tier == 1 || tier == 2) && activity == 'C') {
+        cout << ">> Self-guided tour of Xunantunich Mayan Temples\n";
+        cout << "   Hand-cranked ferry crossing to the ancient ceremonial site.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Mosquito repellent\n";
+        cout << " * Local ferry tip money\n";
+        cout << " * Hydration pack\n";
+    } else if (destination == 2 && weather == 2 && activity == 'A') {
+        cout << ">> Barton Creek Cave Canoe Expedition (covered canopy)\n";
+        cout << "   Paddle through the cave system, sheltered from the rain.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Poncho\n";
+        cout << " * Dry pack\n";
+        cout << " * Headlamp with fresh alkaline batteries\n";
+    } else if (destination == 3 && tier == 3 && activity == 'R') {
+        cout << ">> Luxury Eco-Lodge birding canopy walk & cocoa tour\n";
+        cout << "   Private guided experience through the southern rainforest canopy.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Insect bite soothing cream\n";
+        cout << " * Binoculars\n";
+        cout << " * Moisture-wicking linen\n";
+    } else {
+        cout << ">> General Belize Sightseeing & Local Market Tour\n";
+        cout << "   A flexible day exploring local culture and scenery.\n\n";
+        cout << "RECOMMENDED GEAR CHECKLIST:\n";
+        cout << " * Comfortable walking shoes\n";
+        cout << " * Sunscreen\n";
+        cout << " * Bottled water\n";
+    }
+
+    cout << "\nLOGISTICAL ADVISORY:\n";
+    if (destination == 1) {
+        cout << " * Water taxi transit running on regular schedule.\n";
+        cout << " * Book authorized tour guides with BTB (Belize Tourism Board) license.\n";
+    } else if (destination == 2) {
+        cout << " * Rental vehicles recommended for reaching remote trailheads.\n";
+        cout << " * Book authorized tour guides with BTB (Belize Tourism Board) license.\n";
+    } else {
+        cout << " * Road conditions may be limited; confirm lodge transfer times.\n";
+        cout << " * Book authorized tour guides with BTB (Belize Tourism Board) license.\n";
+    }
+
+    cout << "================================================================\n";
+    cout << "Enjoy your travels in Belize - \"Mother Nature's Best Kept Secret\"!\n";
+
+    return 0;
+}
