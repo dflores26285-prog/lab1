@@ -1,0 +1,66 @@
+
+#include <iostream>
+#include <limits>
+#include "Team.h"
+using namespace std;
+
+void heading() {
+    cout << "\n====================================\n";
+    cout << "       SPORTS TEAM REGISTRATION\n";
+    cout << "====================================\n";
+}
+
+int main() {
+    Team myTeam;
+    int menuChoice;
+
+    do {
+        heading();
+
+        cout << "\n1. Register a Player";
+        cout << "\n2. View All Players";
+        cout << "\n3. Search for a Player";
+        cout << "\n4. Display Team Summary";
+        cout << "\n5. Exit";
+
+        cout << "\n\nEnter your choice: ";
+
+        if (!(cin >> menuChoice)) {
+            cout << "\nInvalid input. Enter a number.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        switch (menuChoice) {
+
+            case 1:
+                myTeam.registerPlayer();
+                break;
+
+            case 2:
+                myTeam.teamMembers();
+                break;
+
+            case 3:
+                myTeam.searchPlayer();
+                break;
+
+            case 4:
+                myTeam.teamSummary();
+                break;
+
+            case 5:
+                cout << "\nExiting program. Goodbye!\n";
+                break;
+
+            default:
+                cout << "\nInvalid menu choice. Try again.\n";
+        }
+
+    } while (menuChoice != 5);
+
+    return 0;
+}
